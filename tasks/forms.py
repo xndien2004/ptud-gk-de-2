@@ -11,8 +11,7 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
     
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Tùy chỉnh các validation rules cho username
+        super().__init__(*args, **kwargs) 
         self.fields['username'].help_text = 'Tên tài khoản có thể chứa chữ cái, số và ký tự đặc biệt.'
         self.fields['username'].validators = []
         self.fields['username'].widget.attrs.update({
