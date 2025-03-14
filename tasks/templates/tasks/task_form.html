@@ -1,0 +1,43 @@
+{% extends 'tasks/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {% if form.instance.id %}Edit Task{% else %}New Task{% endif %} - Task Manager
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">{% if form.instance.id %}Edit Task{% else %}Create New Task{% endif %}</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            {{ form|crispy }}
+                        </fieldset>
+                        <div class="form-group d-flex justify-content-between">
+                            <a href="{% url 'task-list' %}" class="btn btn-outline-secondary">Cancel</a>
+                            <button class="btn btn-primary" type="submit">
+                                {% if form.instance.id %}Update Task{% else %}Create Task{% endif %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Format the date-time input fields
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add any additional JavaScript for the form if needed
+    });
+</script>
+{% endblock %}

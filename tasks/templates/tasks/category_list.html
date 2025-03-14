@@ -1,0 +1,86 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}Categories - Task Manager{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Header with user info -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Categories</h2>
+                <div class="d-flex align-items-center">
+                    <a href="{% url 'category-create' %}" class="btn btn-success mr-2">
+                        <i class="fas fa-plus"></i> New Category
+                    </a>
+                    <div class="position-relative ml-2">
+                        <img src="{{ user.profile.avatar.url }}" alt="{{ user.username }}" class="rounded-circle" style="width: 40px; height: 40px;">
+                        {% if overdue_tasks_count > 0 %}
+                        <div class="position-absolute badge badge-danger p-1" style="top: -8px; right: -8px;">
+                            {{ overdue_tasks_count }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Categories List -->
+            {% if categories %}
+                {% for category in categories %}
+                <div class="card mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">{{ category.name }}</h5>
+                        <span class="badge badge-primary">
+                            {{ category.task_set.count }} tasks
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ category.description|default:"No description provided." }}</p>
+                        
+                        {% if category.task_set.count > 0 %}
+                        <div class="mt-3">
+                            <h6>Recent tasks in this category:</h6>
+                            <ul class="list-group">
+                                {% for task in category.task_set.all|slice:":3" %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a href="{% url 'task-detail' task.id %}">{{ task.title }}</a>
+                                    <span class="badge 
+                                        {% if task.status == 'pending' %}badge-warning
+                                        {% elif task.status == 'in_progress' %}badge-info
+                                        {% elif task.status == 'completed' %}badge-success
+                                        {% else %}badge-secondary
+                                        {% endif %}">
+                                        {{ task.get_status_display }}
+                                    </span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% if category.task_set.count > 3 %}
+                            <small class="text-muted mt-2 d-block">And {{ category.task_set.count|add:"-3" }} more tasks...</small>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer d-flex justify-content-end">
+                        <a href="{% url 'task-list' %}?category={{ category.id }}" class="btn btn-sm btn-info mr-2">
+                            <i class="fas fa-tasks"></i> View Tasks
+                        </a>
+                        <a href="#" class="btn btn-sm btn-primary mr-2">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a href="#" class="btn btn-sm btn-danger">
+                            <i class="fas fa-trash"></i> Delete
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info">
+                    <h4 class="alert-heading">No categories found!</h4>
+                    <p>You haven't created any categories yet. Click the "New Category" button to get started.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

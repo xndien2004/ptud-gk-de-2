@@ -1,0 +1,29 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}Logout - Task Manager{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Logout Confirmation</h4>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-4">Are you sure you want to logout?</h5>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger mr-2">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Yes, Logout
+                        </button>
+                        <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+                            <i class="fas fa-times mr-2"></i>Cancel
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

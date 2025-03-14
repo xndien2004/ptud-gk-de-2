@@ -1,0 +1,30 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}Delete Task - Task Manager{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Delete Task</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <h2>Are you sure you want to delete "{{ object.title }}"?</h2>
+                            <p class="text-muted">This action cannot be undone.</p>
+                        </fieldset>
+                        <div class="form-group d-flex justify-content-between">
+                            <a href="{% url 'task-detail' object.id %}" class="btn btn-outline-secondary">Cancel</a>
+                            <button class="btn btn-danger" type="submit">Yes, Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
