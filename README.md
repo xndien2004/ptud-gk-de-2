@@ -72,7 +72,13 @@ python manage.py runserver
 ```
 🌐 **Truy cập ngay tại**: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)  
 
+🚀 2. Chạy ứng dụng tự động
+Chỉ cần chạy lệnh sau để thiết lập môi trường, cài đặt thư viện, tạo cơ sở dữ liệu và khởi động server Django:
+```bash
+bash run.sh
+```
 ---
+
 
 ## 🎨 **Giao diện người dùng**  
 💡 Giao diện được thiết kế **đơn giản, dễ sử dụng**, tối ưu cho cả desktop và mobile.  

@@ -5,48 +5,73 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #f8f9fa;
+    background-color: #e9ecef; /* Lighter background for a fresh look */
     padding-bottom: 60px; /* For footer space */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Navigation */
 .navbar {
     margin-bottom: 20px;
+    background-color: #005f73; /* Deep teal for a professional look */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: #ffffff !important;
 }
 
 /* Main Content */
 main {
     flex: 1;
+    padding: 20px;
 }
 
 /* Cards */
 .card {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
 }
 
 .card-header {
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     border-bottom: 1px solid #dee2e6;
-    font-weight: 500;
+    font-weight: 600;
+    color: #495057;
 }
 
 /* Forms */
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    border-radius: 4px;
+    border: 1px solid #ced4da;
 }
 
 /* Buttons */
-.btn-block {
-    width: 100%;
+.btn-primary {
+    background-color: #0a9396; /* Vibrant teal */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #94d2bd; /* Lighter teal for hover */
 }
 
 /* Footer */
 footer {
     margin-top: auto;
-    background-color: #343a40;
+    background-color: #001219; /* Very dark teal */
     color: white;
     padding: 1rem 0;
+    text-align: center;
 }
 
 /* Avatar */
@@ -59,38 +84,35 @@ footer {
 
 /* Task Status Colors */
 .status-pending {
-    color: #ffc107;
+    color: #ffba08; /* Vibrant yellow */
 }
 
 .status-in-progress {
-    color: #17a2b8;
+    color: #00b4d8; /* Bright cyan */
 }
 
 .status-completed {
-    color: #28a745;
+    color: #55a630; /* Healthy green */
 }
 
 .status-overdue {
-    color: #dc3545;
+    color: #d00000; /* Strong red */
 }
 
 /* Avatar styling */
 .avatar-sm {
     width: 32px;
     height: 32px;
-    object-fit: cover;
 }
 
 .avatar-md {
     width: 64px;
     height: 64px;
-    object-fit: cover;
 }
 
 .avatar-lg {
     width: 150px;
     height: 150px;
-    object-fit: cover;
 }
 
 /* Task status indicators */
@@ -104,14 +126,17 @@ footer {
 
 /* Overdue task indication */
 .overdue {
-    border-left: 4px solid #dc3545 !important;
+    border-left: 4px solid #d00000 !important;
 }
 
 /* Dashboard statistics */
 .stat-card {
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem;
     transition: transform 0.3s ease;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .stat-card:hover {
@@ -121,7 +146,7 @@ footer {
 .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    color: #005f73;
 }
 
 .stat-label {
@@ -137,7 +162,8 @@ footer {
 
 /* Form styling */
 .form-group label {
-    font-weight: 500;
+    font-weight: 600;
+    color: #495057;
 }
 
 /* Single column layout specific styles */
@@ -169,5 +195,8 @@ footer {
 
 /* Alert styling for overdue tasks */
 .overdue-alert {
-    background-color: rgba(220, 53, 69, 0.1);
+    background-color: rgba(208, 0, 0, 0.1);
+    border-left: 4px solid #d00000;
+    padding: 10px;
+    border-radius: 4px;
 }
